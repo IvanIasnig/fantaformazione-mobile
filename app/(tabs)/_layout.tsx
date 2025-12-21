@@ -18,7 +18,7 @@ export default function TabLayout() {
             {
               ...StyleSheet.absoluteFillObject,
               top: undefined,
-              paddingVertical: moderateVerticalScale(10),
+              paddingVertical: moderateVerticalScale(8),
               paddingHorizontal: moderateScale(16),
               marginHorizontal: moderateScale(16),
               borderRadius: moderateScale(40),
@@ -30,12 +30,12 @@ export default function TabLayout() {
           <TabTrigger name="index" href="/" asChild>
             <PressableBottomTab routeName="index" />
           </TabTrigger>
-          <TabTrigger name="map" href="/" asChild>
+          {/* <TabTrigger name="map" href="/" asChild>
             <PressableBottomTab routeName="map" />
           </TabTrigger>
           <TabTrigger name="ipiu" href="/" asChild>
             <PressableBottomTab routeName="ipiu" />
-          </TabTrigger>
+          </TabTrigger> */}
         </GlassContainer>
       </TabList>
     </Tabs>
