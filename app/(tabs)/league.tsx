@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 import { COLORS } from "@src/styles/colors";
 
-export default function HomeScreen() {
+export default function LeagueScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Dashboard</Text>
+      <Text style={styles.text}>Leghe</Text>
     </View>
   );
 }

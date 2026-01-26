@@ -30,12 +30,15 @@ export default function TabLayout() {
           <TabTrigger name="index" href="/" asChild>
             <PressableBottomTab routeName="index" />
           </TabTrigger>
-          {/* <TabTrigger name="map" href="/" asChild>
-            <PressableBottomTab routeName="map" />
+          <TabTrigger name="team" href="/team" asChild>
+            <PressableBottomTab routeName="team" />
           </TabTrigger>
-          <TabTrigger name="ipiu" href="/" asChild>
-            <PressableBottomTab routeName="ipiu" />
-          </TabTrigger> */}
+          <TabTrigger name="league" href="/league" asChild>
+            <PressableBottomTab routeName="league" />
+          </TabTrigger>
+          <TabTrigger name="market" href="/market" asChild>
+            <PressableBottomTab routeName="market" />
+          </TabTrigger>
         </GlassContainer>
       </TabList>
     </Tabs>

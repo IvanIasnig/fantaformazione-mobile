@@ -27,9 +27,9 @@ export const PressableBottomTab = ({
 }: PressableTabProps) => {
   const { t } = useTranslation();
 
-  const AnimtedIcon = useMemo(
+  const AnimatedIcon = useMemo(
     () => Animated.createAnimatedComponent(TAB_BAR_ICON_MAP[routeName]),
-    [routeName]
+    [routeName],
   );
 
   const textWidth = useSharedValue(0);
@@ -43,7 +43,7 @@ export const PressableBottomTab = ({
   const pressableStyle = useAnimatedStyle(() => ({
     backgroundColor: withTiming(
       isFocused ? `${COLORS.BLUE}FF` : `${COLORS.BLUE}00`,
-      { duration: ANIMATION_DURATION }
+      { duration: ANIMATION_DURATION },
     ),
   }));
 
@@ -56,7 +56,7 @@ export const PressableBottomTab = ({
   const textStyle = useAnimatedStyle(() => ({
     opacity: withDelay(
       isFocused ? ANIMATION_DELAY : 0,
-      withTiming(isFocused ? 1 : 0, { duration: ANIMATION_DURATION })
+      withTiming(isFocused ? 1 : 0, { duration: ANIMATION_DURATION }),
     ),
   }));
 
@@ -72,7 +72,7 @@ export const PressableBottomTab = ({
       style={[styles.routeContainer, pressableStyle]}
     >
       <View style={styles.iconContainer}>
-        <AnimtedIcon animatedProps={animatedProps} />
+        <AnimatedIcon animatedProps={animatedProps} />
       </View>
 
       <Animated.View style={[styles.textContainer, textContainerStyle]}>
