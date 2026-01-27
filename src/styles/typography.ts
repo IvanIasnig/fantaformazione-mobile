@@ -1,32 +1,30 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const Typography = StyleSheet.create({
-  atAeroTrial: {
-    fontFamily: 'AtAeroTRIAL-Medium',
-    fontWeight: '500',
+  openSansRegular: {
+    fontFamily: "OpenSans-Regular",
+    fontWeight: "400",
   },
-  dmSansRegular: {
-    fontFamily: 'DMSans_18pt-Regular',
-    fontWeight: '400',
+  openSansMedium: {
+    fontFamily: "OpenSans-Medium",
+    fontWeight: "500",
   },
-  dmSansMedium: {
-    fontFamily: 'DMSans_18pt-Regular',
-    fontWeight: '500',
+  openSansBold: {
+    fontFamily: "OpenSans-Bold",
+    fontWeight: "700",
   },
-  dmSansBold: {
-    fontFamily: 'DMSans_18pt-Regular',
-    fontWeight: '700',
+
+  // Usage Semantic Helpers (optional but good for consistency)
+  body: {
+    fontFamily: "OpenSans-Regular",
+    fontSize: 16,
   },
-  satoshiBold: {
-    fontFamily: 'Satoshi-Bold',
-    fontWeight: '700',
+  title: {
+    fontFamily: "OpenSans-Bold",
+    fontSize: 24,
   },
-  satoshiMedium: {
-    fontFamily: 'Satoshi-Medium',
-    fontWeight: '500',
-  },
-  satoshiRegular: {
-    fontFamily: 'Satoshi-Regular',
-    fontWeight: '400',
+  subtitle: {
+    fontFamily: "OpenSans-Medium",
+    fontSize: 18,
   },
 });

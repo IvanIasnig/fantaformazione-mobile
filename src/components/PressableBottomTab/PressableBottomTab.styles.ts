@@ -1,4 +1,3 @@
-import { COLORS } from "@src/styles/colors";
 import { Typography } from "@src/styles/typography";
 import { moderateScale } from "@src/utils/scaling";
 import { StyleSheet } from "react-native";
@@ -21,7 +20,7 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   textStyle: {
-    ...Typography.dmSansMedium,
+    ...Typography.openSansMedium,
     fontSize: moderateScale(10),
     textAlign: "center",
   },

@@ -33,14 +33,14 @@ export const PressableBottomTab = ({
   }));
 
   const textStyle = useAnimatedStyle(() => ({
-    color: withTiming(isFocused ? COLORS.BLUE : COLORS.BLACK, {
+    color: withTiming(isFocused ? COLORS.BLUE_PRIMARY : COLORS.BLACK, {
       duration: 200,
     }),
     opacity: withTiming(isFocused ? 1 : 0.6, { duration: 200 }),
   }));
 
   const animatedProps = useAnimatedProps(() => ({
-    color: withTiming(isFocused ? COLORS.BLUE : COLORS.BLACK, {
+    color: withTiming(isFocused ? COLORS.BLUE_PRIMARY : COLORS.BLACK, {
       duration: 200,
     }),
   }));
