@@ -1,38 +1,28 @@
-import { COLORS } from '@src/styles/colors';
-import { TAB_BAR_HEIGHT } from '@src/styles/dimensions';
-import { Typography } from '@src/styles/typography';
-import { moderateScale, moderateVerticalScale } from '@src/utils/scaling';
-import { StyleSheet } from 'react-native';
+import { COLORS } from "@src/styles/colors";
+import { Typography } from "@src/styles/typography";
+import { moderateScale } from "@src/utils/scaling";
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  // Kept for potential usage or reference, though likely unused by the item itself
   tabBar: {
-    ...StyleSheet.absoluteFillObject,
-    top: undefined,
-    paddingVertical: moderateVerticalScale(10),
-    paddingHorizontal: moderateScale(16),
-    marginHorizontal: moderateScale(16),
-    borderRadius: moderateScale(40),
-    height: TAB_BAR_HEIGHT,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
   routeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: moderateVerticalScale(8),
-    paddingHorizontal: moderateScale(8),
-    borderRadius: moderateScale(40),
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: moderateScale(4),
   },
   iconContainer: {
-    height: moderateVerticalScale(24),
-    aspectRatio: 1 / 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  textContainer: { alignItems: 'center', flexDirection: 'row' },
   textStyle: {
-    color: COLORS.WHITE,
-    marginLeft: moderateScale(4),
     ...Typography.dmSansMedium,
-    fontSize: moderateScale(14),
+    fontSize: moderateScale(10),
+    textAlign: "center",
   },
-  textWrapper: { position: 'absolute' },
 });

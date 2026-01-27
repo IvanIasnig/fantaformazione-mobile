@@ -1,11 +1,10 @@
 import React, { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { LayoutChangeEvent, Pressable, View } from "react-native";
+import { Pressable } from "react-native";
 import Animated, {
   useAnimatedProps,
   useAnimatedStyle,
-  useSharedValue,
-  withDelay,
+  withSpring,
   withTiming,
 } from "react-native-reanimated";
 import {
@@ -14,9 +13,6 @@ import {
 } from "./PressableBottomTab.models";
 import styles from "./PressableBottomTab.styles";
 import { COLORS } from "@src/styles/colors";
-
-const ANIMATION_DURATION = 350;
-const ANIMATION_DELAY = 150;
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -32,56 +28,32 @@ export const PressableBottomTab = ({
     [routeName],
   );
 
-  const textWidth = useSharedValue(0);
-
-  const onLayout = ({ nativeEvent }: LayoutChangeEvent) => {
-    if (textWidth.value) return;
-
-    textWidth.value = nativeEvent.layout.width;
-  };
-
-  const pressableStyle = useAnimatedStyle(() => ({
-    backgroundColor: withTiming(
-      isFocused ? `${COLORS.BLUE}FF` : `${COLORS.BLUE}00`,
-      { duration: ANIMATION_DURATION },
-    ),
-  }));
-
-  const textContainerStyle = useAnimatedStyle(() => ({
-    width: withTiming(isFocused ? textWidth.value : 0, {
-      duration: ANIMATION_DURATION,
-    }),
+  const iconStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: withSpring(isFocused ? 1.1 : 1) }],
   }));
 
   const textStyle = useAnimatedStyle(() => ({
-    opacity: withDelay(
-      isFocused ? ANIMATION_DELAY : 0,
-      withTiming(isFocused ? 1 : 0, { duration: ANIMATION_DURATION }),
-    ),
+    color: withTiming(isFocused ? COLORS.BLUE : COLORS.BLACK, {
+      duration: 200,
+    }),
+    opacity: withTiming(isFocused ? 1 : 0.6, { duration: 200 }),
   }));
 
   const animatedProps = useAnimatedProps(() => ({
-    color: withTiming(isFocused ? COLORS.WHITE : COLORS.BLACK, {
-      duration: ANIMATION_DURATION,
+    color: withTiming(isFocused ? COLORS.BLUE : COLORS.BLACK, {
+      duration: 200,
     }),
   }));
 
   return (
-    <AnimatedPressable
-      {...props}
-      style={[styles.routeContainer, pressableStyle]}
-    >
-      <View style={styles.iconContainer}>
+    <AnimatedPressable {...props} style={styles.routeContainer}>
+      <Animated.View style={[styles.iconContainer, iconStyle]}>
         <AnimatedIcon animatedProps={animatedProps} />
-      </View>
-
-      <Animated.View style={[styles.textContainer, textContainerStyle]}>
-        <View style={styles.textWrapper} onLayout={onLayout}>
-          <Animated.Text style={[styles.textStyle, textStyle]}>
-            {t(`tabName.${routeName}`)}
-          </Animated.Text>
-        </View>
       </Animated.View>
+
+      <Animated.Text style={[styles.textStyle, textStyle]}>
+        {t(`tabName.${routeName}`)}
+      </Animated.Text>
     </AnimatedPressable>
   );
 };

@@ -1,1 +1,1 @@
-export { default } from "@src/screens/TeamScreen";
+export { default } from "@src/screens/Team/TeamScreen";

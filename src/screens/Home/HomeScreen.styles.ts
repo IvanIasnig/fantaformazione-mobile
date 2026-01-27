@@ -1,15 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { COLORS } from "@src/styles/colors";
 
-export default function TeamScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>La Mia Rosa</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
