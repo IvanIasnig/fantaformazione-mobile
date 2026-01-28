@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Link, useRouter } from "expo-router";
+import { REGISTER } from "@src/navigation/routes";
 import { useAuth } from "@src/context/AuthContext";
 import { styles } from "./LoginScreen.styles";
 
@@ -46,7 +47,7 @@ const LoginScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <Link href="/register" asChild>
+      <Link href={REGISTER} asChild>
         <TouchableOpacity style={styles.linkButton}>
           <Text style={styles.linkText}>Don't have an account? Register</Text>
         </TouchableOpacity>

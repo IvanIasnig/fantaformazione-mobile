@@ -1,4 +1,5 @@
 import { TabList, TabSlot, TabTrigger, Tabs } from "expo-router/ui";
+import { HOME, TEAM, LEAGUE, MARKET } from "@src/navigation/routes";
 import { StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { moderateScale, moderateVerticalScale } from "@src/utils/scaling";
@@ -27,16 +28,16 @@ export default function TabLayout() {
             },
           ])}
         >
-          <TabTrigger name="index" href="/" asChild>
+          <TabTrigger name="index" href={HOME} asChild>
             <PressableBottomTab routeName="index" />
           </TabTrigger>
-          <TabTrigger name="team" href="/team" asChild>
+          <TabTrigger name="team" href={TEAM} asChild>
             <PressableBottomTab routeName="team" />
           </TabTrigger>
-          <TabTrigger name="league" href="/league" asChild>
+          <TabTrigger name="league" href={LEAGUE} asChild>
             <PressableBottomTab routeName="league" />
           </TabTrigger>
-          <TabTrigger name="market" href="/market" asChild>
+          <TabTrigger name="market" href={MARKET} asChild>
             <PressableBottomTab routeName="market" />
           </TabTrigger>
         </GlassContainer>

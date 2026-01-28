@@ -1,4 +1,5 @@
 import { STACK_OPTIONS } from "@src/navigation/config";
+import { HOME, LOGIN } from "@src/navigation/routes";
 import {
   Stack,
   usePathname,
@@ -61,11 +62,11 @@ const MainNavigator = () => {
 
     if (!user && !inAuthGroup) {
       // Redirect to the login page if the user is not authenticated
-      router.replace("/login");
+      router.replace(LOGIN);
     } else if (user && inAuthGroup) {
       // Redirect to the home page if the user is authenticated
       // and tries to access authentication screens
-      router.replace("/");
+      router.replace(HOME);
     }
   }, [user, isLoading, segments, rootNavigationState]);
 
