@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, withTranslation } from "react-i18next";
 import { Pressable } from "react-native";
 import Animated, {
   useAnimatedProps,
@@ -20,10 +20,9 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export const PressableBottomTab = ({
   routeName,
   isFocused,
+  t,
   ...props
 }: PressableTabProps) => {
-  const { t } = useTranslation([TAB_BAR_NS]);
-
   const AnimatedIcon = useMemo(
     () => Animated.createAnimatedComponent(TAB_BAR_ICON_MAP[routeName]),
     [routeName],
@@ -59,4 +58,4 @@ export const PressableBottomTab = ({
   );
 };
 
-export default memo(PressableBottomTab);
+export default memo(withTranslation(TAB_BAR_NS)(PressableBottomTab));

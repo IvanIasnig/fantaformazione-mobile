@@ -2,11 +2,14 @@ import { STACK_OPTIONS } from "@src/navigation/config";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import initializeTranslation, { i18nInstance } from "@src/translations/i18n";
+import { I18nextProvider } from "react-i18next";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [isI18nInitialized, setIsI18nInitialized] = useState(false);
   const [loaded, error] = useFonts({
     "OpenSans-Regular": require("../assets/fonts/OpenSans-Regular.ttf"),
     "OpenSans-Medium": require("../assets/fonts/OpenSans-Medium.ttf"),
@@ -14,22 +17,28 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (loaded || error) {
+    initializeTranslation().then(() => setIsI18nInitialized(true));
+  }, []);
+
+  useEffect(() => {
+    if ((loaded || error) && isI18nInitialized) {
       SplashScreen.hideAsync();
     }
-  }, [loaded, error]);
+  }, [loaded, error, isI18nInitialized]);
 
-  if (!loaded && !error) {
+  if ((!loaded && !error) || !isI18nInitialized) {
     return null;
   }
 
   return (
-    <Stack screenOptions={STACK_OPTIONS}>
-      <Stack.Screen name="(tabs)" options={{ animation: "fade" }} />
-      {/* <Stack.Screen
-        name="modal"
-        options={{ presentation: "modal", title: "Modal" }}
-      /> */}
-    </Stack>
+    <I18nextProvider i18n={i18nInstance}>
+      <Stack screenOptions={STACK_OPTIONS}>
+        <Stack.Screen name="(tabs)" options={{ animation: "fade" }} />
+        {/* <Stack.Screen
+          name="modal"
+          options={{ presentation: "modal", title: "Modal" }}
+        /> */}
+      </Stack>
+    </I18nextProvider>
   );
 }

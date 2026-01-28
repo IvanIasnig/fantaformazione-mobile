@@ -1,7 +1,13 @@
-import { BackendModule, MultiReadCallback, Resource, ResourceLanguage, Services } from 'i18next';
-import { SupportedLanguages, supportedLngs } from '../i18n.constants';
-import en_translation from '../locales/en.json';
-import it_translation from '../locales/it.json';
+import {
+  BackendModule,
+  MultiReadCallback,
+  Resource,
+  ResourceLanguage,
+  Services,
+} from "i18next";
+import { SupportedLanguages, supportedLngs } from "../i18n.constants";
+import en_translation from "../locales/en.json";
+import it_translation from "../locales/it.json";
 
 export const resources = {
   en: en_translation,
@@ -9,7 +15,7 @@ export const resources = {
 };
 
 class StorageBackend implements BackendModule {
-  type = 'backend' as const;
+  type = "backend" as const;
 
   static type: string;
 
@@ -21,7 +27,11 @@ class StorageBackend implements BackendModule {
 
   async read() {}
 
-  async readMulti(languages: SupportedLanguages[], namespaces: string[], callback: MultiReadCallback) {
+  async readMulti(
+    languages: SupportedLanguages[],
+    namespaces: string[],
+    callback: MultiReadCallback,
+  ) {
     const resource: Resource = {};
 
     for (const lng of languages) {
@@ -35,7 +45,9 @@ class StorageBackend implements BackendModule {
         const namespaceData = resourceLng[namespace];
 
         if (!namespaceData) {
-          console.warn(`${namespace} namespace not found in ${lng} translation file`);
+          console.warn(
+            `${namespace} namespace not found in ${lng} translation file`,
+          );
           continue;
         }
 
@@ -49,6 +61,6 @@ class StorageBackend implements BackendModule {
   }
 }
 
-StorageBackend.type = 'backend';
+StorageBackend.type = "backend";
 
 export default StorageBackend;
