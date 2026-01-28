@@ -13,6 +13,7 @@ import {
 } from "./PressableBottomTab.models";
 import styles from "./PressableBottomTab.styles";
 import { COLORS } from "@src/styles/colors";
+import { TAB_BAR_NS } from "@src/translations/i18n.constants";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -21,7 +22,7 @@ export const PressableBottomTab = ({
   isFocused,
   ...props
 }: PressableTabProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation([TAB_BAR_NS]);
 
   const AnimatedIcon = useMemo(
     () => Animated.createAnimatedComponent(TAB_BAR_ICON_MAP[routeName]),
@@ -52,7 +53,7 @@ export const PressableBottomTab = ({
       </Animated.View>
 
       <Animated.Text style={[styles.textStyle, textStyle]}>
-        {t(`tabName.${routeName}`)}
+        {t(routeName)}
       </Animated.Text>
     </AnimatedPressable>
   );

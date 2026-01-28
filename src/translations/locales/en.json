@@ -1,0 +1,8 @@
+{
+  "tabBar": {
+    "index": "Home",
+    "team": "Team",
+    "league": "League",
+    "market": "Market"
+  }
+}
