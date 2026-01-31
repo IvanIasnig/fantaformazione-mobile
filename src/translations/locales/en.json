@@ -4,5 +4,16 @@
     "team": "Team",
     "league": "League",
     "market": "Market"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "confirmPassword": "Confirm Password",
+    "noAccount": "Don't have an account? Register",
+    "hasAccount": "Already have an account? Login",
+    "passwordsDoNotMatch": "Passwords do not match"
   }
 }

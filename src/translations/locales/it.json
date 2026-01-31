@@ -4,5 +4,16 @@
     "team": "Squadra",
     "league": "Lega",
     "market": "Mercato"
+  },
+  "auth": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "name": "Nome",
+    "confirmPassword": "Conferma Password",
+    "noAccount": "Non hai un account? Registrati",
+    "hasAccount": "Hai già un account? Accedi",
+    "passwordsDoNotMatch": "Le password non corrispondono"
   }
 }

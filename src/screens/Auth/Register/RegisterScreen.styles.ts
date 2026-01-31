@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
   },
-
   button: {
     backgroundColor: "#007AFF",
     padding: 15,

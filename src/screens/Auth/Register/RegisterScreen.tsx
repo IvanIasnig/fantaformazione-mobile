@@ -5,8 +5,10 @@ import { LOGIN } from "@src/navigation/routes";
 import { useAuth } from "@src/context/AuthContext";
 import { styles } from "./RegisterScreen.styles";
 import FFTextInput from "@src/components/FFTextInput/FFTextInput";
+import { WithTranslation, withTranslation } from "react-i18next";
+import { AUTH_NS } from "@src/translations/i18n.constants";
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ t }: WithTranslation) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +20,7 @@ const RegisterScreen = () => {
     try {
       setError("");
       if (password !== confirmPassword) {
-        setError("Passwords do not match");
+        setError(t("passwordsDoNotMatch"));
         return;
       }
       await signUp(email, password, { name });
@@ -29,44 +31,44 @@ const RegisterScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>{t("register")}</Text>
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
-      <FFTextInput label="Name" value={name} onChangeText={setName} />
+      <FFTextInput label={t("name")} value={name} onChangeText={setName} />
 
       <FFTextInput
-        label="Email"
+        label={t("email")}
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
       />
 
       <FFTextInput
-        label="Password"
+        label={t("password")}
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
 
       <FFTextInput
-        label="Confirm Password"
+        label={t("confirmPassword")}
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         secureTextEntry
       />
 
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Register</Text>
+        <Text style={styles.buttonText}>{t("register")}</Text>
       </TouchableOpacity>
 
       <Link href={LOGIN} asChild>
         <TouchableOpacity style={styles.linkButton}>
-          <Text style={styles.linkText}>Already have an account? Login</Text>
+          <Text style={styles.linkText}>{t("hasAccount")}</Text>
         </TouchableOpacity>
       </Link>
     </View>
   );
 };
 
-export default RegisterScreen;
+export default withTranslation(AUTH_NS)(RegisterScreen);
