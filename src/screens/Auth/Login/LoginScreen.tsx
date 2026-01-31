@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Link, useRouter } from "expo-router";
 import { REGISTER } from "@src/navigation/routes";
 import { useAuth } from "@src/context/AuthContext";
 import { styles } from "./LoginScreen.styles";
+import FFTextInput from "@src/components/FFTextInput/FFTextInput";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -27,17 +28,15 @@ const LoginScreen = () => {
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
+      <FFTextInput
+        label="Email"
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
       />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
+      <FFTextInput
+        label="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry

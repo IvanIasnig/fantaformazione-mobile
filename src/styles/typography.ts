@@ -13,18 +13,4 @@ export const Typography = StyleSheet.create({
     fontFamily: "OpenSans-Bold",
     fontWeight: "700",
   },
-
-  // Usage Semantic Helpers (optional but good for consistency)
-  body: {
-    fontFamily: "OpenSans-Regular",
-    fontSize: 16,
-  },
-  title: {
-    fontFamily: "OpenSans-Bold",
-    fontSize: 24,
-  },
-  subtitle: {
-    fontFamily: "OpenSans-Medium",
-    fontSize: 18,
-  },
 });
