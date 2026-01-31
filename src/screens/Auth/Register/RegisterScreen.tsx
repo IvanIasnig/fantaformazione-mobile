@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import { LOGIN } from "@src/navigation/routes";
 import { useAuth } from "@src/context/AuthContext";
 import { styles } from "./RegisterScreen.styles";
+import FFTextInput from "@src/components/FFTextInput/FFTextInput";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -32,32 +33,24 @@ const RegisterScreen = () => {
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={name}
-        onChangeText={setName}
-      />
+      <FFTextInput label="Name" value={name} onChangeText={setName} />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
+      <FFTextInput
+        label="Email"
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
       />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
+      <FFTextInput
+        label="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
+      <FFTextInput
+        label="Confirm Password"
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         secureTextEntry
