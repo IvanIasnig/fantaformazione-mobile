@@ -1,9 +1,8 @@
 {
   "tabBar": {
-    "index": "Home",
-    "team": "Squadra",
-    "league": "Lega",
-    "market": "Mercato"
+    "index": "Squadra",
+    "market": "Mercato",
+    "profile": "Profilo"
   },
   "auth": {
     "login": "Accedi",

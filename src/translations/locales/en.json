@@ -1,9 +1,8 @@
 {
   "tabBar": {
-    "index": "Home",
     "team": "Team",
-    "league": "League",
-    "market": "Market"
+    "market": "Market",
+    "profile": "Profile"
   },
   "auth": {
     "login": "Login",
