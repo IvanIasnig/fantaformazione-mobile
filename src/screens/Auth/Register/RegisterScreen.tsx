@@ -9,7 +9,6 @@ import { WithTranslation, withTranslation } from "react-i18next";
 import { AUTH_NS } from "@src/translations/i18n.constants";
 
 const RegisterScreen = ({ t }: WithTranslation) => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,7 +22,7 @@ const RegisterScreen = ({ t }: WithTranslation) => {
         setError(t("passwordsDoNotMatch"));
         return;
       }
-      await signUp(email, password, { name });
+      await signUp(email, password);
     } catch (e: any) {
       setError(e.message);
     }
@@ -34,8 +33,6 @@ const RegisterScreen = ({ t }: WithTranslation) => {
       <Text style={styles.title}>{t("register")}</Text>
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
-
-      <FFTextInput label={t("name")} value={name} onChangeText={setName} />
 
       <FFTextInput
         label={t("email")}

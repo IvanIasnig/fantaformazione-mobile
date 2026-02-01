@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 import { REGISTER } from "@src/navigation/routes";
 import { useAuth } from "@src/context/AuthContext";
 import { styles } from "./LoginScreen.styles";
@@ -13,7 +13,6 @@ const LoginScreen = ({ t }: WithTranslation) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { signIn } = useAuth();
-  const router = useRouter();
 
   const handleLogin = async () => {
     try {

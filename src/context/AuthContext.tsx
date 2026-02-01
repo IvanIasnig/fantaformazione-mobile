@@ -3,14 +3,10 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 interface AuthContextType {
-  user: any | null; // Replace 'any' with Supabase User type
+  user: any | null;
   isLoading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (
-    email: string,
-    password: string,
-    data: { name: string },
-  ) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -29,7 +25,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check active sessions and sets the user
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       setIsLoading(false);
@@ -53,15 +48,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (error) throw error;
   };
 
-  const signUp = async (
-    email: string,
-    password: string,
-    data: { name: string },
-  ) => {
+  const signUp = async (email: string, password: string) => {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data },
     });
     if (error) throw error;
   };
