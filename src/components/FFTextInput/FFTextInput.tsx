@@ -5,7 +5,6 @@ import {
   Text,
   TextInputProps,
   StyleProp,
-  TextStyle,
   ViewStyle,
 } from "react-native";
 import Animated, {
@@ -45,12 +44,13 @@ const FFTextInput: React.FC<FFTextInputProps> = ({
   const animation = useSharedValue(value ? 1 : 0);
 
   useEffect(() => {
-    if (isFocused || value) {
+    const isActive = isFocused || (value && value.length > 0);
+    if (isActive) {
       animation.value = withTiming(1, ANIMATION_CONFIG);
     } else {
       animation.value = withTiming(0, ANIMATION_CONFIG);
     }
-  }, [value, isFocused]);
+  }, [Boolean(value), isFocused]);
 
   const handleFocus = (e: any) => {
     setIsFocused(true);
@@ -88,7 +88,10 @@ const FFTextInput: React.FC<FFTextInputProps> = ({
           !!error && styles.inputContainerError,
         ]}
       >
-        <Animated.Text style={[styles.label, animatedLabelStyle]}>
+        <Animated.Text
+          style={[styles.label, animatedLabelStyle]}
+          pointerEvents="none"
+        >
           {label}
         </Animated.Text>
         <TextInput

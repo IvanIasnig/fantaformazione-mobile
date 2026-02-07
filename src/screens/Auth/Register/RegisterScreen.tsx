@@ -39,6 +39,7 @@ const RegisterScreen = ({ t }: WithTranslation) => {
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
+        autoCorrect={false}
       />
 
       <FFTextInput

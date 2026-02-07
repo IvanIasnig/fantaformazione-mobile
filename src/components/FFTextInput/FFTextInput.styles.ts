@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
     ...Typography.openSansRegular,
     fontSize: moderateScale(16),
     color: COLORS.BLACK,
+    height: "100%",
   },
   label: {
     position: "absolute",

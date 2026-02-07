@@ -1,5 +1,5 @@
 import { STACK_OPTIONS } from "@src/navigation/config";
-import { HOME, LOGIN } from "@src/navigation/routes";
+import { LOGIN, SQUAD } from "@src/navigation/routes";
 import {
   Stack,
   usePathname,
@@ -61,12 +61,9 @@ const MainNavigator = () => {
     const inAuthGroup = segments[0] === "(auth)";
 
     if (!user && !inAuthGroup) {
-      // Redirect to the login page if the user is not authenticated
       router.replace(LOGIN);
     } else if (user && inAuthGroup) {
-      // Redirect to the home page if the user is authenticated
-      // and tries to access authentication screens
-      router.replace(HOME);
+      router.replace(SQUAD);
     }
   }, [user, isLoading, segments, rootNavigationState]);
 
@@ -82,7 +79,6 @@ const MainNavigator = () => {
   }, [pathname, segments]);
 
   if (isLoading) {
-    // Return null or a loading spinner while authentication is being checked
     return null;
   }
 
