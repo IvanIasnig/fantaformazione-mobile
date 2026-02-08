@@ -72,7 +72,8 @@ const MainNavigator = () => {
     const previousPathname = previousPathnameRef.current;
 
     if (previousPathname !== currentPathname) {
-      const routeName = segments[segments.length - 1] || "index";
+      // const routeName = segments[segments.length - 1] || "index";
+      // TODO: Send routeName to Firebase Analytics
     }
 
     previousPathnameRef.current = currentPathname;
