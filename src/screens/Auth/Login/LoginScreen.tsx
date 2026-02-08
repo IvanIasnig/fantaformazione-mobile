@@ -18,8 +18,8 @@ const LoginScreen = ({ t }: WithTranslation) => {
     try {
       setError("");
       await signIn(email, password);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
     }
   };
 

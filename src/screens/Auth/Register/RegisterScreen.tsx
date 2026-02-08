@@ -23,8 +23,8 @@ const RegisterScreen = ({ t }: WithTranslation) => {
         return;
       }
       await signUp(email, password);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
     }
   };
 

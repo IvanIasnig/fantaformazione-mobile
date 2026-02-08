@@ -52,12 +52,12 @@ const FFTextInput: React.FC<FFTextInputProps> = ({
     }
   }, [Boolean(value), isFocused]);
 
-  const handleFocus = (e: any) => {
+  const handleFocus = (e: Parameters<NonNullable<typeof onFocus>>[0]) => {
     setIsFocused(true);
     onFocus?.(e);
   };
 
-  const handleBlur = (e: any) => {
+  const handleBlur = (e: Parameters<NonNullable<typeof onBlur>>[0]) => {
     setIsFocused(false);
     onBlur?.(e);
   };

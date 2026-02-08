@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { useTranslation, withTranslation } from "react-i18next";
+import { withTranslation } from "react-i18next";
 import { Pressable } from "react-native";
 import Animated, {
   useAnimatedProps,
@@ -40,7 +40,7 @@ export const PressableBottomTab = ({
   }));
 
   const animatedProps = useAnimatedProps(() => ({
-    color: withTiming(isFocused ? COLORS.BLUE_PRIMARY : COLORS.BLACK, {
+    stroke: withTiming(isFocused ? COLORS.BLUE_PRIMARY : COLORS.BLACK, {
       duration: 200,
     }),
   }));

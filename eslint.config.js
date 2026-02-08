@@ -19,7 +19,7 @@ module.exports = defineConfig([
       "expo",
       "prettier",
       "plugin:react/recommended",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
     ),
 
     plugins: {
@@ -45,6 +45,8 @@ module.exports = defineConfig([
           ignoreRestSiblings: true,
         },
       ],
+      "@typescript-eslint/no-explicit-any": "error",
+      "no-unused-vars": "off",
       "react-hooks/rules-of-hooks": "error",
       "prettier/prettier": "error",
       "react/jsx-curly-brace-presence": "error",
