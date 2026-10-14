@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // === Percorsi sorgenti e build ===
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // === Target runtime Node ===
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["esnext"],
+
+    // === Compatibilità Node ===
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node"],
+
+    // === Debug e tipi ===
+    "sourceMap": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // === Miglioramenti di sicurezza del tipo ===
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
