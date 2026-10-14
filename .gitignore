@@ -20,3 +20,23 @@ dist/
 
 .DS_Store
 *.tsbuildinfo
+
+# Expo / React Native generated
+**/ios/
+**/android/
+**/web-build/
+**/.kotlin/
+**/.metro-health-check*
+
+# Native credentials / generated files
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+CREDENTIALS.md
+SETUP_NOTES.txt
+app-example/
