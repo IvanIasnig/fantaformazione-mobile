@@ -1,0 +1,266 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// =========================
+// PLAYER
+// =========================
+
+model Player {
+  id        Int     @id @default(autoincrement())
+  apiId     Int     @unique
+  name      String
+  firstname String?
+  lastname  String?
+  age       Int?
+
+  birthDate    String?
+  birthPlace   String?
+  birthCountry String?
+
+  nationality String?
+  height      String?
+  weight      String?
+  injured     Boolean?
+  photo       String?
+
+  statistics Statistic[]
+
+  myTeamPlayers MyTeamPlayer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================
+// STATISTIC
+// =========================
+
+model Statistic {
+  id       Int    @id @default(autoincrement())
+  player   Player @relation(fields: [playerId], references: [id])
+  playerId Int
+
+  team   Team @relation(fields: [teamId], references: [id])
+  teamId Int
+
+  league   League @relation(fields: [leagueId], references: [id])
+  leagueId Int
+
+  games       Games?
+  substitutes Substitutes?
+  shots       Shots?
+  goals       Goals?
+  passes      Passes?
+  tackles     Tackles?
+  duels       Duels?
+  dribbles    Dribbles?
+  fouls       Fouls?
+  cards       Cards?
+  penalty     Penalty?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================
+// TEAM
+// =========================
+
+model Team {
+  id    Int         @id @default(autoincrement())
+  apiId Int         @unique
+  name  String
+  logo  String
+  stats Statistic[]
+}
+
+// =========================
+// LEAGUE
+// =========================
+
+model League {
+  id      Int         @id @default(autoincrement())
+  apiId   Int         @unique
+  name    String
+  country String
+  logo    String
+  flag    String
+  season  Int
+  stats   Statistic[]
+}
+
+// =========================
+// GAMES
+// =========================
+
+model Games {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  appearences Int?
+  lineups     Int?
+  minutes     Int?
+  number      Int?
+  position    String?
+  rating      String?
+  captain     Boolean?
+}
+
+// =========================
+// SUBSTITUTES
+// =========================
+
+model Substitutes {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  in_   Int? // "in" è riservata in Prisma
+  out   Int?
+  bench Int?
+}
+
+// =========================
+// SHOTS
+// =========================
+
+model Shots {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  total    Int?
+  onTarget Int?
+}
+
+// =========================
+// GOALS
+// =========================
+
+model Goals {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  total    Int?
+  conceded Int?
+  assists  Int?
+  saves    Int?
+}
+
+// =========================
+// PASSES
+// =========================
+
+model Passes {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  total    Int?
+  key      Int?
+  accuracy Int?
+}
+
+// =========================
+// TACKLES
+// =========================
+
+model Tackles {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  total         Int?
+  blocks        Int?
+  interceptions Int?
+}
+
+// =========================
+// DUELS
+// =========================
+
+model Duels {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  total Int?
+  won   Int?
+}
+
+// =========================
+// DRIBBLES
+// =========================
+
+model Dribbles {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  attempts Int?
+  success  Int?
+  past     Int?
+}
+
+// =========================
+// FOULS
+// =========================
+
+model Fouls {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  drawn     Int?
+  committed Int?
+}
+
+// =========================
+// CARDS
+// =========================
+
+model Cards {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  yellow    Int?
+  yellowred Int?
+  red       Int?
+}
+
+// =========================
+// PENALTY
+// =========================
+
+model Penalty {
+  id          Int       @id @default(autoincrement())
+  statistic   Statistic @relation(fields: [statisticId], references: [id])
+  statisticId Int       @unique
+
+  won      Int?
+  commited Int?
+  scored   Int?
+  missed   Int?
+  saved    Int?
+}
+
+// =========================
+// MY TEAM
+// =========================
+
+model MyTeamPlayer {
+  id       Int    @id @default(autoincrement())
+  playerId Int
+  player   Player @relation(fields: [playerId], references: [id])
+}
