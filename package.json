@@ -1,0 +1,15 @@
+{
+  "name": "fanta-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "mobile": "pnpm --dir apps/mobile start",
+    "mobile:ios": "pnpm --dir apps/mobile ios",
+    "mobile:android": "pnpm --dir apps/mobile android",
+    "mobile:lint": "pnpm --dir apps/mobile lint",
+    "api": "pnpm --dir apps/api dev",
+    "api:build": "pnpm --dir apps/api build",
+    "db:studio": "pnpm --dir apps/api db:studio",
+    "db:reset": "pnpm --dir apps/api db:reset"
+  }
+}
