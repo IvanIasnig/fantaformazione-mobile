@@ -9,7 +9,17 @@
     "mobile:lint": "pnpm --dir apps/mobile lint",
     "api": "pnpm --dir apps/api dev",
     "api:build": "pnpm --dir apps/api build",
-    "db:studio": "pnpm --dir apps/api db:studio",
-    "db:reset": "pnpm --dir apps/api db:reset"
+    "api:test": "pnpm --dir apps/api test",
+    "api:lint": "pnpm --dir apps/api lint",
+    "api:typecheck": "pnpm --dir apps/api typecheck",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:status": "supabase status",
+    "db:migrate": "pnpm --dir apps/api db:migrate",
+    "db:reset": "pnpm --dir apps/api db:reset",
+    "db:studio": "pnpm --dir apps/api db:studio"
+  },
+  "devDependencies": {
+    "supabase": "^2.121.0"
   }
 }

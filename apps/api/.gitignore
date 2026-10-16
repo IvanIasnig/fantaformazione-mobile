@@ -1,6 +1,8 @@
 # Node
 node_modules
 dist
+coverage
+*.tsbuildinfo
 
 # Environment
 .env
@@ -17,4 +19,6 @@ yarn-error.log*
 
 #generic
 api-list.txt
+
+# Prisma Client generato da `prisma generate` (postinstall)
 /src/generated/prisma

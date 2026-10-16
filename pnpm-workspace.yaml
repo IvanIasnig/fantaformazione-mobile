@@ -1,3 +1,10 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+# Dipendenze autorizzate (true) o no (false) a eseguire script di installazione (pnpm >= 10.26)
+allowBuilds:
+  "@prisma/engines": true
+  "@scarf/scarf": false
+  prisma: true
+  supabase: true

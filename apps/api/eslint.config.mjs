@@ -1,28 +1,27 @@
 import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
-import prettierPlugin from "eslint-plugin-prettier";
+import { defineConfig } from "eslint/config";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 
-export default [
+export default defineConfig(
+  { ignores: ["dist", "coverage", "src/generated", "eslint.config.mjs"] },
   js.configs.recommended,
-  ...tseslint.configs.recommended,
-  prettier,
+  tseslint.configs.recommendedTypeChecked,
+  prettierRecommended,
   {
-    plugins: {
-      prettier: prettierPlugin,
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     rules: {
       "prettier/prettier": "warn",
       "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-      "no-console": "off",
-    },
-    languageOptions: {
-      parser: tseslint.parser,
-      globals: {
-        ...globals.node,
-      },
     },
   },
-];
+);
